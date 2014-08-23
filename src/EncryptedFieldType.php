@@ -1,4 +1,4 @@
-<?php namespace Addon\FieldType\Encrypted;
+<?php namespace Streams\Addon\FieldType\Encrypted;
 
 use Streams\Core\Addon\FieldTypeAbstract;
 
