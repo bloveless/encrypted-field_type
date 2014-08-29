@@ -9,14 +9,7 @@ class EncryptedFieldType extends FieldTypeAbstract
      *
      * @var string
      */
-    public $columnType = 'string';
-
-    /**
-     * Field type version
-     *
-     * @var string
-     */
-    public $version = '1.1.0';
+    public $columnType = 'text';
 
     /**
      * Available field type settings.
@@ -28,21 +21,11 @@ class EncryptedFieldType extends FieldTypeAbstract
     );
 
     /**
-     * Field type author information.
-     *
-     * @var array
-     */
-    public $author = array(
-        'name' => 'AI Web Systems, Inc.',
-        'url'  => 'http://aiwebsystems.com/',
-    );
-
-    /**
      * Return the input used for forms.
      *
      * @return mixed
      */
-    public function formInput()
+    public function input()
     {
         $value = \Crypt::decrypt($this->value);
 
@@ -59,15 +42,5 @@ class EncryptedFieldType extends FieldTypeAbstract
     public function preSave()
     {
         return \Crypt::encrypt($this->value);
-    }
-
-    /**
-     * Return the string output value.
-     *
-     * @return string
-     */
-    public function stringOutput()
-    {
-        return \Crypt::decrypt($this->value);
     }
 }
