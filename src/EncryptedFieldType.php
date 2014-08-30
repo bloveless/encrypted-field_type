@@ -27,20 +27,20 @@ class EncryptedFieldType extends FieldTypeAbstract
      */
     public function input()
     {
-        $value = \Crypt::decrypt($this->value);
+        $value = \Crypt::decrypt($this->value());
 
-        $type = $this->getParameter('hide_typing', true) ? 'password' : 'text';
+        $type = $this->getSetting('hide_typing', true) ? 'password' : 'text';
 
-        return \Form::input($type, $this->formSlug, $value);
+        return \Form::input($type, $this->inputName(), $value);
     }
 
     /**
-     * Process value before saving.
+     * Encrypt the value upon setting.
      *
      * @return mixed
      */
-    public function preSave()
+    public function mutate($value)
     {
-        return \Crypt::encrypt($this->value);
+        return \Crypt::encrypt($value);
     }
 }
