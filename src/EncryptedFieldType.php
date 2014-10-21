@@ -4,6 +4,8 @@ use Anomaly\Streams\Platform\Addon\FieldType\FieldTypeAddon;
 
 class EncryptedFieldType extends FieldTypeAddon
 {
+    protected $slug = 'encrypted';
+
     /**
      * The database column type this field type uses.
      *
@@ -27,7 +29,7 @@ class EncryptedFieldType extends FieldTypeAddon
      */
     public function input()
     {
-        $value = \Crypt::decrypt($this->value());
+        $value = \Crypt::decrypt($this->value);
 
         $type = $this->getSetting('hide_typing', true) ? 'password' : 'text';
 
