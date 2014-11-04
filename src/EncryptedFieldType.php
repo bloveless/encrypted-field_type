@@ -2,25 +2,59 @@
 
 use Anomaly\Streams\Platform\Addon\FieldType\FieldTypeAddon;
 
+/**
+ * Class EncryptedFieldType
+ *
+ * @link          http://anomaly.is/streams-platform
+ * @author        AnomalyLabs, Inc. <hello@anomaly.is>
+ * @author        Ryan Thompson <ryan@anomaly.is>
+ * @package       Anomaly\Streams\Addon\FieldType\Encrypted
+ */
 class EncryptedFieldType extends FieldTypeAddon
 {
-    public $columnType = 'text';
 
-    public $settings = array(
+    /**
+     * The database column type.
+     *
+     * @var string
+     */
+    protected $columnType = 'text';
+
+    /**
+     * Available settings.
+     *
+     * @var array
+     */
+    protected $settings = array(
         'hide_typing',
     );
 
+    /**
+     * Return the input HTML.
+     *
+     * @return mixed
+     */
     public function input()
     {
-        $value = \Crypt::decrypt($this->value);
+        $options = [
+            'class'       => 'form-control',
+            'placeholder' => $this->getPlaceholder(),
+        ];
 
-        $type = $this->getSetting('hide_typing', true) ? 'password' : 'text';
+        // TODO: Figure out settings.
+        $method = false ? 'text' : 'password';
 
-        return \Form::input($type, $this->inputName(), $value);
+        return app('form')->{$method}($this->getFieldName(), $this->getValue(), $options);
     }
 
-    public function mutate($value)
+    /**
+     * Encrypt the value when setting.
+     *
+     * @param $value
+     * @return mixed
+     */
+    public function onSet($value)
     {
-        return \Crypt::encrypt($value);
+        return app('encrypter')->encrypt($value);
     }
 }
