@@ -53,7 +53,7 @@ class EncryptedFieldType extends FieldType
      * @param $value
      * @return mixed
      */
-    public function onSet($value)
+    protected function onSet($value)
     {
         return app('encrypter')->encrypt($value);
     }
