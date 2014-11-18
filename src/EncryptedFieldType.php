@@ -21,39 +21,26 @@ class EncryptedFieldType extends FieldType
     protected $columnType = 'text';
 
     /**
-     * Available settings.
+     * Get view data for the input.
      *
-     * @var array
+     * @return array
      */
-    protected $settings = array(
-        'hide_typing',
-    );
-
-    /**
-     * Return the input HTML.
-     *
-     * @return mixed
-     */
-    public function input()
+    public function getInputData()
     {
-        $options = [
-            'class'       => 'form-control',
-            'placeholder' => $this->getPlaceholder(),
-        ];
+        $data = parent::getInputData();
 
-        // TODO: Figure out settings.
-        $method = false ? 'text' : 'password';
+        $data['type'] = $this->getConfig('hide_typing', false) ? 'password' : 'text';
 
-        return app('form')->{$method}($this->getFieldName(), $this->getValue(), $options);
+        return $data;
     }
 
     /**
-     * Encrypt the value when setting.
+     * Encrypt the value before setting on the entry.
      *
      * @param $value
      * @return mixed
      */
-    protected function onSet($value)
+    public function mutate($value)
     {
         return app('encrypter')->encrypt($value);
     }
