@@ -22,16 +22,5 @@ class EncryptedFieldTypePresenter extends FieldTypePresenter
     {
         return app('encrypter')->decrypt($this->resource->getValue());
     }
-
-    /**
-     * Return the hash of the value.
-     *
-     * @param string $algorithm
-     * @return string
-     */
-    public function hash($algorithm = 'md5')
-    {
-        return hashify($this->resource->getValue(), $algorithm);
-    }
 }
  
