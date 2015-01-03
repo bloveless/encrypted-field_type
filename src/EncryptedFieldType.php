@@ -1,4 +1,4 @@
-<?php namespace Anomaly\Streams\Addon\FieldType\Encrypted;
+<?php namespace Anomaly\EncryptedFieldType;
 
 use Anomaly\Streams\Platform\Addon\FieldType\FieldType;
 
