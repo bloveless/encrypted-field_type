@@ -1,5 +1,5 @@
 {
-    "name": "anomaly/encrypted-field-type",
+    "name": "anomaly/encrypted-field_type",
     "type": "streams-addon",
     "description": "Encrypted field type.",
     "authors": [
