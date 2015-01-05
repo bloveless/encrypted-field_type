@@ -29,7 +29,7 @@ class EncryptedFieldType extends FieldType
     {
         $data = parent::getInputData();
 
-        $data['type'] = $this->pullConfig('hide_typing', false) ? 'password' : 'text';
+        $data['type'] = array_get($this->config, 'hide_typing', false) ? 'password' : 'text';
 
         return $data;
     }
