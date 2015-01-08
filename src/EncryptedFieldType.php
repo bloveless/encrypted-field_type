@@ -21,18 +21,11 @@ class EncryptedFieldType extends FieldType
     protected $columnType = 'text';
 
     /**
-     * Get view data for the input.
+     * The input view.
      *
-     * @return array
+     * @var string
      */
-    public function getInputData()
-    {
-        $data = parent::getInputData();
-
-        $data['type'] = array_get($this->config, 'hide_typing', false) ? 'password' : 'text';
-
-        return $data;
-    }
+    protected $inputView = 'anomaly.field_type.encrypted::input';
 
     /**
      * Encrypt the value before setting on the entry.
