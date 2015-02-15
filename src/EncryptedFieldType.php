@@ -8,7 +8,7 @@ use Anomaly\Streams\Platform\Addon\FieldType\FieldType;
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\Streams\Addon\FieldType\Encrypted
+ * @package       Anomaly\EncryptedFieldType
  */
 class EncryptedFieldType extends FieldType
 {
@@ -27,14 +27,4 @@ class EncryptedFieldType extends FieldType
      */
     protected $inputView = 'anomaly.field_type.encrypted::input';
 
-    /**
-     * Encrypt the value before setting on the entry.
-     *
-     * @param $value
-     * @return mixed
-     */
-    public function mutate($value)
-    {
-        return app('encrypter')->encrypt($value);
-    }
 }
