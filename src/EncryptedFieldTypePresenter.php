@@ -18,7 +18,7 @@ class EncryptedFieldTypePresenter extends FieldTypePresenter
      *
      * @return string
      */
-    public function decrypt()
+    public function decrypted()
     {
         if (!$value = $this->object->getValue()) {
             return null;
