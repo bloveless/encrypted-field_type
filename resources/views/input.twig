@@ -1,6 +1,14 @@
 <input
-        type="text"
-        name="{{ field_type.input_name }}"
-        placeholder="{{ trans(field_type.placeholder) }}"
         class="form-control"
-        >
+        name="{{ field_type.input_name }}"
+        value="{{ field_type.presenter.decrypted }}"
+        placeholder="{{ trans(field_type.placeholder) }}"
+        type="{{ field_type.config.show_text ? 'text' : 'password' }}"
+        {{ field_type.disabled ? 'disabled' }}
+        {{ field_type.readonly ? 'readonly' }}>
+
+{% if not field_type.config.show_text %}
+    <a href="#" onclick="$(this).closest('div').find('input').attr('type', 'text'); return false;">
+        <small>{{ trans('anomaly.field_type.encrypted::input.show_text') }}</small>
+    </a>
+{% endif %}
