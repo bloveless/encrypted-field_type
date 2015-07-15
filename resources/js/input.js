@@ -13,5 +13,7 @@ $(function () {
                 wrapper.find('input').attr('type', 'password');
             }
         });
+        
+        return false;
     });
 });
