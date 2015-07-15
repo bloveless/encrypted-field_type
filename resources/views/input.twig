@@ -10,7 +10,7 @@
         {{ field_type.readonly ? 'readonly' }}>
 
 {% if not field_type.config.show_text %}
-    <a href="#" data-toggle="text">
+    <a href="javascript:;" data-toggle="text">
         <small>{{ trans('anomaly.field_type.encrypted::input.toggle_text') }}</small>
     </a>
 {% endif %}
