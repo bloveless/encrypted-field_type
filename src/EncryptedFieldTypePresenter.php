@@ -24,12 +24,12 @@ class EncryptedFieldTypePresenter extends FieldTypePresenter
     /**
      * Create a new EncryptedFieldTypePresenter instance.
      *
-     * @param Encrypter $encrypter
-     * @param           $object
+     * @param $object
      */
-    public function __construct(Encrypter $encrypter, $object)
+    public function __construct($object)
     {
-        $this->encrypter = $encrypter;
+        // Workaround for deprecated class in 5.1
+        $this->encrypter = app('Illuminate\Encryption\Encrypter');
 
         parent::__construct($object);
     }
