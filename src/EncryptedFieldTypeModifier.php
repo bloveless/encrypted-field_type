@@ -25,12 +25,12 @@ class EncryptedFieldTypeModifier extends FieldTypeModifier
     /**
      * Create a new EncryptedFieldTypeModifier instance.
      *
-     * @param Encrypter $encrypter
      * @param FieldType $fieldType
      */
-    public function __construct(Encrypter $encrypter, FieldType $fieldType)
+    public function __construct(FieldType $fieldType)
     {
-        $this->encrypter = $encrypter;
+        // Workaround for deprecated class in 5.1
+        $this->encrypter = app('Illuminate\Encryption\Encrypter');
 
         parent::__construct($fieldType);
     }
