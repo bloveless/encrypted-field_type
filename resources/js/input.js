@@ -8,9 +8,9 @@ $(function () {
         wrapper.find('[data-toggle="text"]').click(function () {
 
             if (wrapper.find('input').attr('type') == 'password') {
-                wrapper.find('input').attr('type', 'text');
+                wrapper.find('input').attr('type', 'text').focus();
             } else {
-                wrapper.find('input').attr('type', 'password');
+                wrapper.find('input').attr('type', 'password').focus();
             }
 
             return false;
