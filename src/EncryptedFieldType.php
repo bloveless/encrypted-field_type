@@ -26,5 +26,4 @@ class EncryptedFieldType extends FieldType
      * @var string
      */
     protected $inputView = 'anomaly.field_type.encrypted::input';
-
 }

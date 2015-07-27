@@ -45,7 +45,11 @@ class EncryptedFieldTypePresenter extends FieldTypePresenter
             return null;
         }
 
-        return $this->encrypter->decrypt($value);
+        if (array_get($this->object->getConfig(), 'auto_decrypt') === true) {
+            return $this->encrypter->decrypt($value);
+        }
+
+        return $value;
     }
 
     /**
@@ -59,6 +63,6 @@ class EncryptedFieldTypePresenter extends FieldTypePresenter
             return null;
         }
 
-        return hash($algorithm, $value);
+        return hash($algorithm, $this->decrypted());
     }
 }
