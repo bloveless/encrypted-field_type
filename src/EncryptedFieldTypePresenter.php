@@ -45,11 +45,12 @@ class EncryptedFieldTypePresenter extends FieldTypePresenter
             return null;
         }
 
+        // Return the value if it's already decoded.
         if (array_get($this->object->getConfig(), 'auto_decrypt') === true) {
-            return $this->encrypter->decrypt($value);
+            return $value;
         }
 
-        return $value;
+        return $this->encrypter->decrypt($value);
     }
 
     /**
