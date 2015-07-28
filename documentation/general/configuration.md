@@ -20,4 +20,4 @@ Display plain text in the input by default. This option can be toggled on and of
 
 ### `auto_decode`
 
-Automatically decode the value when retreiving from the database. The default value is `false`.
+Automatically decode the value when retrieving from the database. The default value is `false`.
